@@ -12,11 +12,14 @@ X_axis = X_axis.reshape(-1, 1)
 reg = linear_model.LinearRegression()
 reg.fit(X_axis, y_axis)
 
-y_pred = reg.predict(X_axis)
+X_axis_extended = pd.Series(list(range(2000, 2031)))
+X_axis_extended = X_axis_extended.reshape(-1, 1)
+
+y_pred = reg.predict(X_axis_extended)
 
 plt.figure()
 plt.scatter(X_axis, y_axis,  color='black')
-plt.plot(X_axis, y_pred, color='blue', linewidth=3)
+plt.plot(X_axis_extended, y_pred, color='blue', linewidth=3)
 
 plt.savefig(filename="ShScoreVsYear")
 plt.close()
